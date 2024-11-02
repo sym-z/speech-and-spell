@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8gif6a3kdtt8"]
+
+[ext_resource type="Texture2D" uid="uid://cyq80u30nfjl8" path="res://sprites/speech-performance-sketch.png" id="1_mwkyu"]
+
+[node name="Speech Scene" type="Node2D"]
+
+[node name="Reference Image" type="Sprite2D" parent="."]
+texture = ExtResource("1_mwkyu")
+centered = false

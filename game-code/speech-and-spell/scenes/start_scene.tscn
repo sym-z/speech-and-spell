@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw04woauyk7rk"]
+
+[ext_resource type="Script" path="res://scripts/start_scene.gd" id="1_fjv6s"]
+[ext_resource type="Texture2D" uid="uid://m282pb6bysn5" path="res://sprites/start-menu-sketch.png" id="2_fn2ry"]
+
+[node name="Start Scene" type="Node2D"]
+script = ExtResource("1_fjv6s")
+
+[node name="Reference Image" type="Sprite2D" parent="."]
+texture = ExtResource("2_fn2ry")
+centered = false

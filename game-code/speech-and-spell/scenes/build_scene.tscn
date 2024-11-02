@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://o8dp7j6fxjhp"]
+
+[ext_resource type="Script" path="res://scripts/build_scene.gd" id="1_2b11n"]
+[ext_resource type="Texture2D" uid="uid://cclt0up3nbif2" path="res://sprites/speech-assembly-sketch.png" id="2_efu6d"]
+
+[node name="Build Scene" type="Node2D"]
+script = ExtResource("1_2b11n")
+
+[node name="Reference Image" type="Sprite2D" parent="."]
+texture = ExtResource("2_efu6d")
+centered = false
