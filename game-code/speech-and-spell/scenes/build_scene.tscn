@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://o8dp7j6fxjhp"]
+[gd_scene load_steps=9 format=3 uid="uid://o8dp7j6fxjhp"]
 
 [ext_resource type="Script" path="res://scripts/build_scene.gd" id="1_2b11n"]
 [ext_resource type="Texture2D" uid="uid://cclt0up3nbif2" path="res://sprites/speech-assembly-sketch.png" id="2_efu6d"]
+[ext_resource type="Texture2D" uid="uid://c3ua88sal7kvc" path="res://sprites/creature_viewport.png" id="3_yyw1m"]
+[ext_resource type="Texture2D" uid="uid://dgxdu6mmp4afx" path="res://sprites/empty-mouth.png" id="4_a5ed8"]
+[ext_resource type="PackedScene" uid="uid://d2qyyctn7xjl8" path="res://scenes/mouth.tscn" id="5_nb0vn"]
+[ext_resource type="PackedScene" uid="uid://uiyx6artcjr5" path="res://scenes/inventory_icon.tscn" id="5_w4rbx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8tvbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yyw1m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do33c"]
+size = Vector2(600, 490)
 
 [node name="Build Scene" type="Node2D"]
 script = ExtResource("1_2b11n")
@@ -9,3 +27,38 @@ script = ExtResource("1_2b11n")
 [node name="Reference Image" type="Sprite2D" parent="."]
 texture = ExtResource("2_efu6d")
 centered = false
+
+[node name="Creature Viewport" type="AnimatedSprite2D" parent="."]
+position = Vector2(60, 40)
+sprite_frames = SubResource("SpriteFrames_8tvbn")
+centered = false
+
+[node name="Mouth Align" type="Marker2D" parent="Creature Viewport"]
+position = Vector2(172, 112)
+
+[node name="Empty Mouth" type="Sprite2D" parent="Creature Viewport/Mouth Align"]
+texture = ExtResource("4_a5ed8")
+offset = Vector2(128, 128)
+
+[node name="Area2D" type="Area2D" parent="Creature Viewport"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Creature Viewport/Area2D"]
+position = Vector2(300, 235)
+shape = SubResource("RectangleShape2D_do33c")
+
+[node name="Inventory Icons" type="Node2D" parent="."]
+
+[node name="Inventory Icon" parent="Inventory Icons" instance=ExtResource("5_w4rbx")]
+position = Vector2(293, 616)
+
+[node name="Icon Locations" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Icon Locations"]
+position = Vector2(293, 616)
+
+[node name="Mouth" parent="." instance=ExtResource("5_nb0vn")]
+position = Vector2(293, 616)
+
+[connection signal="mouse_entered" from="Creature Viewport/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Creature Viewport/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="beingHeld" from="Mouth" to="." method="_on_mouth_being_held"]

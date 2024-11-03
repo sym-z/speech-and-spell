@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://uiyx6artcjr5"]
+
+[ext_resource type="Texture2D" uid="uid://bmkyl6raht1fc" path="res://sprites/a-e-i.png" id="1_ucdoh"]
+[ext_resource type="Script" path="res://scripts/inventory_icon.gd" id="2_1dgja"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8dk7f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ucdoh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Inventory Icon" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8dk7f")
+script = ExtResource("2_1dgja")
