@@ -56,9 +56,23 @@ position = Vector2(293, 616)
 [node name="Marker2D" type="Marker2D" parent="Icon Locations"]
 position = Vector2(293, 616)
 
-[node name="Mouth" parent="." instance=ExtResource("5_nb0vn")]
+[node name="Mouth Inventory" type="Node2D" parent="."]
+
+[node name="Mouth" parent="Mouth Inventory" instance=ExtResource("5_nb0vn")]
 position = Vector2(293, 616)
+
+[node name="Mouth2" parent="Mouth Inventory" instance=ExtResource("5_nb0vn")]
+position = Vector2(534, 617)
+
+[node name="Mouth3" parent="Mouth Inventory" instance=ExtResource("5_nb0vn")]
+position = Vector2(794, 620)
+
+[node name="Mouth4" parent="Mouth Inventory" instance=ExtResource("5_nb0vn")]
+position = Vector2(995, 621)
 
 [connection signal="mouse_entered" from="Creature Viewport/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Creature Viewport/Area2D" to="." method="_on_area_2d_mouse_exited"]
-[connection signal="beingHeld" from="Mouth" to="." method="_on_mouth_being_held"]
+[connection signal="beingHeld" from="Mouth Inventory/Mouth" to="." method="_on_mouth_being_held"]
+[connection signal="beingHeld" from="Mouth Inventory/Mouth2" to="." method="_on_mouth_being_held"]
+[connection signal="beingHeld" from="Mouth Inventory/Mouth3" to="." method="_on_mouth_being_held"]
+[connection signal="beingHeld" from="Mouth Inventory/Mouth4" to="." method="_on_mouth_being_held"]
