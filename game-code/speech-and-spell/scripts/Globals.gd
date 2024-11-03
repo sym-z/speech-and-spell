@@ -1,7 +1,8 @@
 extends Node
 ## TO SYNC THE MENU WITH THE MOUSE
-var CARRYING_MOUTH : bool = false;
-var CURR_MOUTH : AnimatedSprite2D
+var carryingMouth : bool = false;
+var currMouth : AnimatedSprite2D
+var mouthPlugged : bool = false;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	

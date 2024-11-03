@@ -10,7 +10,3 @@ func _ready():
 ## Changes frame to new index
 func refresh(newFrame : int):
 	frame = newFrame
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
