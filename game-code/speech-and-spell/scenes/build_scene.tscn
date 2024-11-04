@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://o8dp7j6fxjhp"]
+[gd_scene load_steps=24 format=3 uid="uid://o8dp7j6fxjhp"]
 
 [ext_resource type="Script" path="res://scripts/build_scene.gd" id="1_2b11n"]
 [ext_resource type="Texture2D" uid="uid://dkn0dp7cnmc3d" path="res://sprites/bg.png" id="2_1elwy"]
@@ -53,6 +53,16 @@ size = Vector2(600, 490)
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_e0lv0"]
 pause = true
 frame_0/texture = ExtResource("8_1r0h1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mah8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij2ie"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hfnw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqkv1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_moay8"]
 
 [node name="Build Scene" type="Node2D" node_paths=PackedStringArray("viewportMouth")]
 script = ExtResource("1_2b11n")
@@ -122,6 +132,7 @@ offset_left = 648.0
 offset_top = 396.0
 offset_right = 846.0
 offset_bottom = 524.0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1mah8")
 icon = ExtResource("9_bpilg")
 flat = true
 
@@ -132,6 +143,7 @@ offset_top = 523.0
 offset_right = 1441.0
 offset_bottom = 651.0
 scale = Vector2(-1, -1)
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ij2ie")
 icon = ExtResource("9_bpilg")
 flat = true
 
@@ -141,6 +153,7 @@ offset_left = 769.0
 offset_top = 582.0
 offset_right = 1207.0
 offset_bottom = 692.0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2hfnw")
 icon = ExtResource("9_tukae")
 flat = true
 
@@ -155,7 +168,9 @@ offset_left = 32.0
 offset_top = 570.0
 offset_right = 140.0
 offset_bottom = 678.0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qqkv1")
 icon = ExtResource("11_x8sne")
+flat = true
 
 [node name="Right Inventory Arrow" type="Button" parent="Inventory"]
 offset_left = 690.0
@@ -163,7 +178,9 @@ offset_top = 678.0
 offset_right = 798.0
 offset_bottom = 786.0
 scale = Vector2(-1, -1)
+theme_override_styles/pressed = SubResource("StyleBoxFlat_moay8")
 icon = ExtResource("11_x8sne")
+flat = true
 
 [node name="Mouth" parent="Inventory" node_paths=PackedStringArray("homePosition") instance=ExtResource("5_nb0vn")]
 position = Vector2(254, 623)
