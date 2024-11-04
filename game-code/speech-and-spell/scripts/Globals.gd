@@ -4,8 +4,10 @@ var carryingMouth : bool = false;
 var currMouth : AnimatedSprite2D
 var mouthPlugged : bool = false;
 # Called when the node enters the scene tree for the first time.
+var selections : Array[int] = []
+enum syllables {A_E_I}
 func _ready():
-	
+	print(syllables.A_E_I)
 	pass # Replace with function body.
 
 
