@@ -3,11 +3,11 @@ extends Node
 var carryingMouth : bool = false;
 var currMouth : AnimatedSprite2D
 var mouthPlugged : bool = false;
-# Called when the node enters the scene tree for the first time.
+
+enum syllableIndex {A_E_I, U, C_D_N_S_T_X_Y_Z, J_SH_CH, G_K, F_V, TH, R, B_M_P, O, L, Q_W}
 var selections : Array[int] = []
-enum syllables {A_E_I}
 func _ready():
-	print(syllables.A_E_I)
+	print(syllableIndex)
 	pass # Replace with function body.
 
 
