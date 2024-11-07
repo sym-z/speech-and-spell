@@ -2,14 +2,6 @@ extends AnimatedSprite2D
 
 @export var homePosition : Marker2D
 
-## When player mouses over the mouth
-var isHovering : bool = false;
-func _on_area_2d_mouse_entered():
-	if(!Globals.carryingMouth):
-		isHovering = true;
-func _on_area_2d_mouse_exited():
-	isHovering = false;
-
 ## When the player is intending to carry the mouth
 var leftMouseDown : bool = false;
 func _input(event):
@@ -18,7 +10,15 @@ func _input(event):
 			leftMouseDown = true;
 		else:
 			leftMouseDown = false;
-			
+
+## When player mouses over the mouth
+var isHovering : bool = false;
+func _on_area_2d_mouse_entered():
+	if(!Globals.carryingMouth or !leftMouseDown):
+		print("Hovering")
+		isHovering = true;
+func _on_area_2d_mouse_exited():
+	isHovering = false;
 
 signal beingHeld
 func _process(delta):
