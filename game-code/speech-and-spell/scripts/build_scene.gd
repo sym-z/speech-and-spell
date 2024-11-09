@@ -15,22 +15,28 @@ func _input(event):
 			Globals.mouthPlugged = true;
 			
 			Globals.currMouth.position = Globals.currMouth.homePosition.position
+			var currFrame = Globals.currMouth.frame
 			Globals.currMouth.animation = "default"
+			Globals.currMouth.frame = currFrame
 			
 			viewportMouth.animation = "syllables"
-			viewportMouth.frame = Globals.currMouth.frame
+			viewportMouth.frame = currFrame
 			print("PLOP!")
 
 			
 func _on_area_2d_mouse_entered():
 	insideWindow = true;
 	if(Globals.carryingMouth):
+		var currFrame = Globals.currMouth.frame
 		Globals.currMouth.animation = "large"
+		Globals.currMouth.frame = currFrame
 
 func _on_area_2d_mouse_exited():
 	insideWindow = false;
 	if(Globals.carryingMouth):
+		var currFrame = Globals.currMouth.frame
 		Globals.currMouth.animation = "default"
+		Globals.currMouth.frame = currFrame
 		
 ## Signal from mouth instance being caught
 func _on_mouth_being_held(mouth):

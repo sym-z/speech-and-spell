@@ -1,7 +1,14 @@
 extends AnimatedSprite2D
 
 @export var homePosition : Marker2D
+## The starting frame of the mouth 
+@export var startingFrame : int = 0
+## Handles switching between mouth shapes
 
+
+func _ready():
+	frame = startingFrame
+	
 ## When the player is intending to carry the mouth
 var leftMouseDown : bool = false;
 func _input(event):
