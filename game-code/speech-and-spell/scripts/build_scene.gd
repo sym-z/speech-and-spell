@@ -60,7 +60,7 @@ func _on_okay_button_button_up():
 		Globals.currSound += 1
 		var format = "[center]%d/%d[/center]"
 		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
-		pass
+
 	else:
 		pass
 	#wordProgressText.text = ""
@@ -81,12 +81,9 @@ func _on_left_word_arrow_button_up():
 			viewportMouth.animation = "syllables"
 			viewportMouth.frame = Globals.soundsSelected[Globals.currSound].animFrame
 			Globals.mouthPlugged = true
-		pass
 	else:
 		# TODO: Play error sound
 		print("ERROR")
-		pass
-	pass # Replace with function body.
 
 func _on_right_word_arrow_button_up():
 	if((Globals.currSound <= Globals.totalSounds) and Globals.mouthPlugged):
@@ -95,7 +92,6 @@ func _on_right_word_arrow_button_up():
 		var format = "[center]%d/%d[/center]"
 		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
 		if(Globals.soundsSelected[Globals.currSound].isEmpty == false):
-			print("gotttcha")
 			viewportMouth.animation = "syllables"
 			viewportMouth.frame = Globals.soundsSelected[Globals.currSound].animFrame
 			Globals.mouthPlugged = true
@@ -115,7 +111,9 @@ func _on_left_inventory_arrow_button_up():
 		leftMouth.frame -= 1
 	else:
 		leftMouth.frame = Globals.INDEX.size() - 1
-		rightMouth.frame -= 1
+		rightMouth.frame -= 1	
+	rightMouth.label.text = '[center]' + Globals.CHAR_INDEX[rightMouth.frame] + '[/center]'
+	leftMouth.label.text = '[center]' + Globals.CHAR_INDEX[leftMouth.frame] + '[/center]'
 
 func _on_right_inventory_arrow_button_up():
 	# Partial wrap around bounds
@@ -130,5 +128,5 @@ func _on_right_inventory_arrow_button_up():
 	else:
 		rightMouth.frame = 0
 		leftMouth.frame += 1
-	
-	pass # Replace with function body.
+	rightMouth.label.text = '[center]' + Globals.CHAR_INDEX[rightMouth.frame] + '[/center]'
+	leftMouth.label.text = '[center]' + Globals.CHAR_INDEX[leftMouth.frame] + '[/center]'

@@ -11,6 +11,7 @@ extends AnimatedSprite2D
 
 func _ready():
 	frame = startingFrame
+	label.text = '[center]' + Globals.CHAR_INDEX[frame] + '[/center]'
 	
 ## When the player is intending to carry the mouth
 var leftMouseDown : bool = false;
@@ -27,10 +28,10 @@ func _on_area_2d_mouse_entered():
 	if(!Globals.carryingMouth or !leftMouseDown):
 		print("Hovering")
 		label.text = '[center]' + Globals.CHAR_INDEX[frame] + '[/center]'
-		label.visible = true
+		label.visible = false
 		isHovering = true;
 func _on_area_2d_mouse_exited():
-	label.visible = false
+	label.visible = true
 	isHovering = false;
 
 signal beingHeld
