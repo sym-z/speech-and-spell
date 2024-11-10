@@ -175,8 +175,8 @@ frame_0/texture = ExtResource("8_1r0h1")
 [node name="Build Scene" type="Node2D" node_paths=PackedStringArray("viewportMouth", "leftMouth", "rightMouth")]
 script = ExtResource("1_2b11n")
 viewportMouth = NodePath("Creature Viewport/Mouth Align/Viewport Mouth")
-leftMouth = NodePath("Inventory/Mouth")
-rightMouth = NodePath("Inventory/Mouth2")
+leftMouth = NodePath("Inventory/Left Mouth")
+rightMouth = NodePath("Inventory/Right Mouth")
 
 [node name="Background Image" type="Sprite2D" parent="."]
 texture = ExtResource("2_1elwy")
@@ -292,12 +292,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_moay8")
 icon = ExtResource("11_x8sne")
 flat = true
 
-[node name="Mouth" parent="Inventory" node_paths=PackedStringArray("homePosition") instance=ExtResource("5_nb0vn")]
+[node name="Left Mouth" parent="Inventory" node_paths=PackedStringArray("homePosition") instance=ExtResource("5_nb0vn")]
 position = Vector2(254, 623)
 homePosition = NodePath("../Marker2D")
 
-[node name="Mouth2" parent="Inventory" node_paths=PackedStringArray("homePosition") instance=ExtResource("5_nb0vn")]
+[node name="Right Mouth" parent="Inventory" node_paths=PackedStringArray("homePosition") instance=ExtResource("5_nb0vn")]
 position = Vector2(457, 625)
+frame = 1
+frame_progress = 0.143357
 homePosition = NodePath("../Marker2D2")
 startingFrame = 1
 
@@ -315,5 +317,5 @@ position = Vector2(461, 633)
 [connection signal="button_up" from="Word Select/Buttons/Unplug Button" to="." method="_on_unplug_button_button_up"]
 [connection signal="button_up" from="Inventory/Left Inventory Arrow" to="." method="_on_left_inventory_arrow_button_up"]
 [connection signal="button_up" from="Inventory/Right Inventory Arrow" to="." method="_on_right_inventory_arrow_button_up"]
-[connection signal="beingHeld" from="Inventory/Mouth" to="." method="_on_mouth_being_held"]
-[connection signal="beingHeld" from="Inventory/Mouth2" to="." method="_on_mouth_being_held"]
+[connection signal="beingHeld" from="Inventory/Left Mouth" to="." method="_on_mouth_being_held"]
+[connection signal="beingHeld" from="Inventory/Right Mouth" to="." method="_on_mouth_being_held"]

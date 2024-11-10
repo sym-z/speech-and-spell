@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://d2qyyctn7xjl8"]
+[gd_scene load_steps=63 format=3 uid="uid://d2qyyctn7xjl8"]
 
 [ext_resource type="Texture2D" uid="uid://b6qj8wl1d4mwb" path="res://sprites/mouth-frames/default/a.png" id="1_f1xla"]
 [ext_resource type="Texture2D" uid="uid://bvs1khvyntl23" path="res://sprites/mouth-frames/default/b.png" id="2_jswm7"]
@@ -58,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://by614ot50x0jr" path="res://sprites/mouth-frames/large/y-LARGE.png" id="55_dfg5p"]
 [ext_resource type="Texture2D" uid="uid://c7sbwwk7fdlj1" path="res://sprites/mouth-frames/large/z-LARGE.png" id="56_qv16o"]
 [ext_resource type="Texture2D" uid="uid://bbq3g4psewtbl" path="res://icon.svg" id="58_2rwo6"]
+[ext_resource type="FontFile" uid="uid://ckuup7rk172pi" path="res://sprites/overlays/overlay.png" id="59_p57k4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f6lj7"]
 animations = [{
@@ -254,10 +255,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Mouth" type="AnimatedSprite2D" node_paths=PackedStringArray("overlay")]
+[node name="Mouth" type="AnimatedSprite2D" node_paths=PackedStringArray("overlay", "label")]
 sprite_frames = SubResource("SpriteFrames_f6lj7")
 script = ExtResource("3_fyms1")
 overlay = NodePath("Overlay")
+label = NodePath("Control/Label")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -269,6 +271,26 @@ shape = SubResource("RectangleShape2D_jmtw1")
 [node name="Overlay" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_p6xw5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Label" type="RichTextLabel" parent="Control"]
+visible = false
+layout_mode = 1
+offset_left = -105.0
+offset_top = -51.0
+offset_right = -72.0
+offset_bottom = -35.0
+scale = Vector2(6.725, 6.725)
+theme_override_fonts/normal_font = ExtResource("59_p57k4")
+bbcode_enabled = true
+text = "[center]S[/center]"
+fit_content = true
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

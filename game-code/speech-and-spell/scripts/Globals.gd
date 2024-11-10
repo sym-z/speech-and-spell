@@ -5,7 +5,8 @@ var currMouth : AnimatedSprite2D
 var mouthPlugged : bool = false;
 
 enum INDEX {A,B,C,CH,D,E,F,G,I,J,K,L,M,N,O,P,Q,R,S,SH,T,TH,U,V,W,X,Y,Z}
-
+## So overlays can match frames
+var CHAR_INDEX = ['A','B','C','CH','D','E','F','G','I','J','K','L','M','N','O','P','Q','R','S','SH','T','TH','U','V','W','X','Y','Z']
 var selections : Array[int] = []
 
 

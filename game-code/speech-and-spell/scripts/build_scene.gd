@@ -9,11 +9,14 @@ var insideWindow : bool = false;
 func _ready():
 	print("Build")
 
-
+func _process(delta):
+	print(insideWindow)
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_released() and Globals.carryingMouth and !Globals.mouthPlugged:
+		print("one")
 		Globals.carryingMouth = false;
 		if insideWindow:
+			print("two")
 			Globals.mouthPlugged = true;
 			
 			Globals.currMouth.position = Globals.currMouth.homePosition.position
@@ -66,18 +69,19 @@ func _on_right_word_arrow_button_up():
 
 
 func _on_left_inventory_arrow_button_up():
-	if(rightMouth.frame == Globals.INDEX.size() -1):
-		rightMouth.frame = 0
-		leftMouth.frame += 1
-	elif(leftMouth.frame < Globals.INDEX.size() -1):
+	if(rightMouth.frame == 0):
+		rightMouth.frame = Globals.INDEX.size() - 1
+		leftMouth.frame -= 1
+	elif(leftMouth.frame > 0):
 		## TODO CHANGE AUDIO AND OVERLAYS HERE CONDENSE INTO OOP
-		rightMouth.frame += 1
-		leftMouth.frame += 1
+		rightMouth.frame -= 1
+		leftMouth.frame -= 1
 	else:
-		leftMouth.frame = 0
-		rightMouth.frame += 1
+		leftMouth.frame = Globals.INDEX.size() - 1
+		rightMouth.frame -= 1
 
 func _on_right_inventory_arrow_button_up():
+	# Partial wrap around bounds
 	if(leftMouth.frame == Globals.INDEX.size() -1):
 		leftMouth.frame = 0
 		rightMouth.frame += 1
@@ -85,6 +89,7 @@ func _on_right_inventory_arrow_button_up():
 		## TODO CHANGE AUDIO AND OVERLAYS HERE CONDENSE INTO OOP
 		leftMouth.frame += 1
 		rightMouth.frame += 1
+	# Start wrap around bounds
 	else:
 		rightMouth.frame = 0
 		leftMouth.frame += 1

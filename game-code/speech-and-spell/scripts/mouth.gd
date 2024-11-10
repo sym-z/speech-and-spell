@@ -7,6 +7,7 @@ extends AnimatedSprite2D
 ## The overlay node that gets changed depending on the mouth's frame
 @export var overlay : AnimatedSprite2D
 
+@export var label : RichTextLabel
 
 func _ready():
 	frame = startingFrame
@@ -25,18 +26,19 @@ var isHovering : bool = false;
 func _on_area_2d_mouse_entered():
 	if(!Globals.carryingMouth or !leftMouseDown):
 		print("Hovering")
+		label.text = '[center]' + Globals.CHAR_INDEX[frame] + '[/center]'
+		label.visible = true
 		isHovering = true;
 func _on_area_2d_mouse_exited():
+	label.visible = false
 	isHovering = false;
 
 signal beingHeld
 func _process(delta):
-	if isHovering and !leftMouseDown:
-		overlay.visible = true
-	else:
-		overlay.visible = false
+
 	if isHovering and leftMouseDown and !Globals.mouthPlugged:
 		Globals.carryingMouth = true;
+		label.visible = false;
 		beingHeld.emit($".")
 		position = get_viewport().get_mouse_position()
 	## Prevents fast mouse movement messing up the mouth's tracking
