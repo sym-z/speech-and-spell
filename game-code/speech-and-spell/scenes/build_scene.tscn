@@ -172,9 +172,11 @@ frame_0/texture = ExtResource("8_1r0h1")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_moay8"]
 
-[node name="Build Scene" type="Node2D" node_paths=PackedStringArray("viewportMouth")]
+[node name="Build Scene" type="Node2D" node_paths=PackedStringArray("viewportMouth", "leftMouth", "rightMouth")]
 script = ExtResource("1_2b11n")
 viewportMouth = NodePath("Creature Viewport/Mouth Align/Viewport Mouth")
+leftMouth = NodePath("Inventory/Mouth")
+rightMouth = NodePath("Inventory/Mouth2")
 
 [node name="Background Image" type="Sprite2D" parent="."]
 texture = ExtResource("2_1elwy")

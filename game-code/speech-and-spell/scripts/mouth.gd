@@ -4,6 +4,8 @@ extends AnimatedSprite2D
 ## The starting frame of the mouth 
 @export var startingFrame : int = 0
 ## Handles switching between mouth shapes
+## The overlay node that gets changed depending on the mouth's frame
+@export var overlay : AnimatedSprite2D
 
 
 func _ready():
@@ -29,10 +31,15 @@ func _on_area_2d_mouse_exited():
 
 signal beingHeld
 func _process(delta):
+	if isHovering and !leftMouseDown:
+		overlay.visible = true
+	else:
+		overlay.visible = false
 	if isHovering and leftMouseDown and !Globals.mouthPlugged:
 		Globals.carryingMouth = true;
 		beingHeld.emit($".")
 		position = get_viewport().get_mouse_position()
+	## Prevents fast mouse movement messing up the mouth's tracking
 	if Globals.carryingMouth and leftMouseDown and $"." == Globals.currMouth:
 		position = get_viewport().get_mouse_position()
 		beingHeld.emit($".")

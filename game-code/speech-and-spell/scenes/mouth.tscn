@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://d2qyyctn7xjl8"]
+[gd_scene load_steps=62 format=3 uid="uid://d2qyyctn7xjl8"]
 
 [ext_resource type="Texture2D" uid="uid://b6qj8wl1d4mwb" path="res://sprites/mouth-frames/default/a.png" id="1_f1xla"]
 [ext_resource type="Texture2D" uid="uid://bvs1khvyntl23" path="res://sprites/mouth-frames/default/b.png" id="2_jswm7"]
@@ -57,6 +57,7 @@
 [ext_resource type="Texture2D" uid="uid://b7lvvffaj0e6s" path="res://sprites/mouth-frames/large/x-LARGE.png" id="54_d8lcx"]
 [ext_resource type="Texture2D" uid="uid://by614ot50x0jr" path="res://sprites/mouth-frames/large/y-LARGE.png" id="55_dfg5p"]
 [ext_resource type="Texture2D" uid="uid://c7sbwwk7fdlj1" path="res://sprites/mouth-frames/large/z-LARGE.png" id="56_qv16o"]
+[ext_resource type="Texture2D" uid="uid://bbq3g4psewtbl" path="res://icon.svg" id="58_2rwo6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f6lj7"]
 animations = [{
@@ -242,9 +243,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmtw1"]
 size = Vector2(134, 134)
 
-[node name="Mouth" type="AnimatedSprite2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6xw5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("58_2rwo6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Mouth" type="AnimatedSprite2D" node_paths=PackedStringArray("overlay")]
 sprite_frames = SubResource("SpriteFrames_f6lj7")
 script = ExtResource("3_fyms1")
+overlay = NodePath("Overlay")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -252,6 +265,10 @@ script = ExtResource("3_fyms1")
 visible = false
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_jmtw1")
+
+[node name="Overlay" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_p6xw5")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

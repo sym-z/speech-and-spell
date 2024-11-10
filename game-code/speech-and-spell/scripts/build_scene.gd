@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var viewportMouth : AnimatedSprite2D
+@export var leftMouth : AnimatedSprite2D
+@export var rightMouth : AnimatedSprite2D
 ## Is the mouse cursor in the window?
 var insideWindow : bool = false;
 
@@ -55,14 +57,36 @@ func _on_unplug_button_button_up():
 
 
 func _on_left_word_arrow_button_up():
+
 	pass # Replace with function body.
 
 func _on_right_word_arrow_button_up():
+
 	pass # Replace with function body.
 
 
 func _on_left_inventory_arrow_button_up():
-	pass # Replace with function body.
+	if(rightMouth.frame == Globals.INDEX.size() -1):
+		rightMouth.frame = 0
+		leftMouth.frame += 1
+	elif(leftMouth.frame < Globals.INDEX.size() -1):
+		## TODO CHANGE AUDIO AND OVERLAYS HERE CONDENSE INTO OOP
+		rightMouth.frame += 1
+		leftMouth.frame += 1
+	else:
+		leftMouth.frame = 0
+		rightMouth.frame += 1
 
 func _on_right_inventory_arrow_button_up():
+	if(leftMouth.frame == Globals.INDEX.size() -1):
+		leftMouth.frame = 0
+		rightMouth.frame += 1
+	elif(rightMouth.frame < Globals.INDEX.size() -1):
+		## TODO CHANGE AUDIO AND OVERLAYS HERE CONDENSE INTO OOP
+		leftMouth.frame += 1
+		rightMouth.frame += 1
+	else:
+		rightMouth.frame = 0
+		leftMouth.frame += 1
+	
 	pass # Replace with function body.
