@@ -47,17 +47,25 @@ func _on_mouth_being_held(mouth):
 	Globals.currMouth = mouth;
 
 func resetMouth():
-	viewportMouth.animation = "default"
-	viewportMouth.frame = 0;
-	Globals.mouthPlugged = false;
+	if(Globals.soundsSelected[Globals.currSound].isEmpty):
+		viewportMouth.animation = "default"
+		viewportMouth.frame = 0;
+		Globals.mouthPlugged = false;
+	else:
+		viewportMouth.animation = "syllables"
+		viewportMouth.frame = Globals.soundsSelected[Globals.currSound].animFrame;
+		
+
 func _on_okay_button_button_up():
 	## TODO: Set viewport mouth to empty, advance syllable in word window, on last syllable move on to speech
-	Globals.soundsSelected[Globals.currSound].isEmpty = false;
-	Globals.soundsSelected[Globals.currSound].animFrame = viewportMouth.frame
-	resetMouth();
-	Globals.printSelections()
+
 	if(Globals.currSound < Globals.totalSounds):
+		Globals.soundsSelected[Globals.currSound].isEmpty = false;
+		Globals.soundsSelected[Globals.currSound].animFrame = viewportMouth.frame
 		Globals.currSound += 1
+		resetMouth();
+		Globals.printSelections()
+		
 		var format = "[center]%d/%d[/center]"
 		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
 	else:
@@ -68,10 +76,11 @@ func _on_okay_button_button_up():
 			intSelections.append(sound.animFrame)
 		print(intSelections)
 		print("GAME WON?: ", Globals.CORRECT_ANSWERS == intSelections )
-		pass
-	#wordProgressText.text = ""
+		call_deferred("nextScene")
 	print("Okay")
 func _on_unplug_button_button_up():
+	Globals.soundsSelected[Globals.currSound].isEmpty = true
+	Globals.soundsSelected[Globals.currSound].animFrame = 0
 	resetMouth();
 
 
@@ -136,3 +145,6 @@ func _on_right_inventory_arrow_button_up():
 		leftMouth.frame += 1
 	rightMouth.label.text = '[center]' + Globals.CHAR_INDEX[rightMouth.frame] + '[/center]'
 	leftMouth.label.text = '[center]' + Globals.CHAR_INDEX[leftMouth.frame] + '[/center]'
+
+func nextScene():
+	get_tree().change_scene_to_file("res://scenes/speech_scene.tscn")
