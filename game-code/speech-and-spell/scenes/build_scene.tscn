@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://o8dp7j6fxjhp"]
+[gd_scene load_steps=52 format=3 uid="uid://o8dp7j6fxjhp"]
 
 [ext_resource type="Script" path="res://scripts/build_scene.gd" id="1_2b11n"]
 [ext_resource type="Texture2D" uid="uid://dkn0dp7cnmc3d" path="res://sprites/bg.png" id="2_1elwy"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://b7lvvffaj0e6s" path="res://sprites/mouth-frames/large/x-LARGE.png" id="31_uta7k"]
 [ext_resource type="Texture2D" uid="uid://by614ot50x0jr" path="res://sprites/mouth-frames/large/y-LARGE.png" id="32_2s5iw"]
 [ext_resource type="Texture2D" uid="uid://c7sbwwk7fdlj1" path="res://sprites/mouth-frames/large/z-LARGE.png" id="33_cqn06"]
+[ext_resource type="FontFile" uid="uid://ckuup7rk172pi" path="res://sprites/overlays/overlay.png" id="38_wqlps"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8tvbn"]
 animations = [{
@@ -172,11 +173,12 @@ frame_0/texture = ExtResource("8_1r0h1")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_moay8"]
 
-[node name="Build Scene" type="Node2D" node_paths=PackedStringArray("viewportMouth", "leftMouth", "rightMouth")]
+[node name="Build Scene" type="Node2D" node_paths=PackedStringArray("viewportMouth", "leftMouth", "rightMouth", "wordProgressText")]
 script = ExtResource("1_2b11n")
 viewportMouth = NodePath("Creature Viewport/Mouth Align/Viewport Mouth")
 leftMouth = NodePath("Inventory/Left Mouth")
 rightMouth = NodePath("Inventory/Right Mouth")
+wordProgressText = NodePath("Word Select/Text/Current Syllable")
 
 [node name="Background Image" type="Sprite2D" parent="."]
 texture = ExtResource("2_1elwy")
@@ -270,6 +272,33 @@ flat = true
 [node name="Word Window Reference" type="Sprite2D" parent="Word Select"]
 position = Vector2(968, 192)
 texture = ExtResource("10_t477v")
+
+[node name="Text" type="Control" parent="Word Select"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Word Text" type="RichTextLabel" parent="Word Select/Text"]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 124.0
+offset_right = 831.0
+offset_bottom = 164.0
+scale = Vector2(3, 3)
+theme_override_fonts/normal_font = ExtResource("38_wqlps")
+bbcode_enabled = true
+text = "[center]TRANSFORMATION[/center]"
+
+[node name="Current Syllable" type="RichTextLabel" parent="Word Select/Text"]
+layout_mode = 0
+offset_left = 851.0
+offset_top = 240.0
+offset_right = 916.0
+offset_bottom = 280.0
+scale = Vector2(3.605, 3.605)
+theme_override_fonts/normal_font = ExtResource("38_wqlps")
+bbcode_enabled = true
+text = "[center]0/12[/center]"
 
 [node name="Inventory" type="Node2D" parent="."]
 

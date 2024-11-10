@@ -5,18 +5,17 @@ extends Node2D
 @export var rightMouth : AnimatedSprite2D
 ## Is the mouse cursor in the window?
 var insideWindow : bool = false;
+## Changes the ?/? syllables when the arrows are pressed or a syllable is confirmed
+@export var wordProgressText : RichTextLabel
 
 func _ready():
 	print("Build")
 
-func _process(delta):
-	print(insideWindow)
+
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_released() and Globals.carryingMouth and !Globals.mouthPlugged:
-		print("one")
 		Globals.carryingMouth = false;
 		if insideWindow:
-			print("two")
 			Globals.mouthPlugged = true;
 			
 			Globals.currMouth.position = Globals.currMouth.homePosition.position
@@ -53,19 +52,57 @@ func resetMouth():
 	Globals.mouthPlugged = false;
 func _on_okay_button_button_up():
 	## TODO: Set viewport mouth to empty, advance syllable in word window, on last syllable move on to speech
+	Globals.soundsSelected[Globals.currSound].isEmpty = false;
+	Globals.soundsSelected[Globals.currSound].animFrame = viewportMouth.frame
 	resetMouth();
+	Globals.printSelections()
+	if(Globals.currSound < Globals.totalSounds):
+		Globals.currSound += 1
+		var format = "[center]%d/%d[/center]"
+		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
+		pass
+	else:
+		pass
+	#wordProgressText.text = ""
 	print("Okay")
 func _on_unplug_button_button_up():
 	resetMouth();
 
 
 func _on_left_word_arrow_button_up():
-
+	print("beep")
+	if(Globals.currSound > 0):
+		Globals.currSound -= 1;
+		# Show the previous choice
+		var format = "[center]%d/%d[/center]"
+		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
+		if(Globals.soundsSelected[Globals.currSound].isEmpty == false):
+			print("gotttcha")
+			viewportMouth.animation = "syllables"
+			viewportMouth.frame = Globals.soundsSelected[Globals.currSound].animFrame
+			Globals.mouthPlugged = true
+		pass
+	else:
+		# TODO: Play error sound
+		print("ERROR")
+		pass
 	pass # Replace with function body.
 
 func _on_right_word_arrow_button_up():
+	if((Globals.currSound <= Globals.totalSounds) and Globals.mouthPlugged):
+		Globals.currSound += 1;
+		# Show the next choice
+		var format = "[center]%d/%d[/center]"
+		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
+		if(Globals.soundsSelected[Globals.currSound].isEmpty == false):
+			print("gotttcha")
+			viewportMouth.animation = "syllables"
+			viewportMouth.frame = Globals.soundsSelected[Globals.currSound].animFrame
+			Globals.mouthPlugged = true
+		else:
+			viewportMouth.animation = "default"
+			Globals.mouthPlugged = false
 
-	pass # Replace with function body.
 
 
 func _on_left_inventory_arrow_button_up():

@@ -242,7 +242,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmtw1"]
-size = Vector2(134, 134)
+size = Vector2(75.5, 79.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p6xw5"]
 animations = [{
@@ -264,8 +264,7 @@ label = NodePath("Control/Label")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(0, 4)
+position = Vector2(0.25, 3.25)
 shape = SubResource("RectangleShape2D_jmtw1")
 
 [node name="Overlay" type="AnimatedSprite2D" parent="."]
@@ -287,6 +286,7 @@ offset_top = -51.0
 offset_right = -72.0
 offset_bottom = -35.0
 scale = Vector2(6.725, 6.725)
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("59_p57k4")
 bbcode_enabled = true
 text = "[center]S[/center]"
