@@ -60,8 +60,14 @@ func _on_okay_button_button_up():
 		Globals.currSound += 1
 		var format = "[center]%d/%d[/center]"
 		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
-
 	else:
+		print("GAME OVER")
+		print(Globals.CORRECT_ANSWERS)
+		var intSelections : Array[int]
+		for sound in Globals.soundsSelected:
+			intSelections.append(sound.animFrame)
+		print(intSelections)
+		print("GAME WON?: ", Globals.CORRECT_ANSWERS == intSelections )
 		pass
 	#wordProgressText.text = ""
 	print("Okay")
