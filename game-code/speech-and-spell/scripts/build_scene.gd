@@ -10,6 +10,8 @@ var insideWindow : bool = false;
 
 func _ready():
 	print("Build")
+	var format = "[center]%d/%d[/center]"
+	wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
 
 
 func _input(event):

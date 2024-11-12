@@ -291,14 +291,14 @@ text = "[center]TRANSFORMATION[/center]"
 
 [node name="Current Syllable" type="RichTextLabel" parent="Word Select/Text"]
 layout_mode = 0
-offset_left = 851.0
+offset_left = 820.0
 offset_top = 240.0
-offset_right = 916.0
+offset_right = 900.0
 offset_bottom = 280.0
 scale = Vector2(3.605, 3.605)
 theme_override_fonts/normal_font = ExtResource("38_wqlps")
 bbcode_enabled = true
-text = "[center]0/12[/center]"
+text = "[center]0/14[/center]"
 
 [node name="Inventory" type="Node2D" parent="."]
 

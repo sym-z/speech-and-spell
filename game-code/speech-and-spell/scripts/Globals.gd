@@ -17,6 +17,7 @@ const CORRECT_ANSWERS = [
 	INDEX.R,
 	INDEX.M,
 	INDEX.A,
+	INDEX.Y,
 	INDEX.SH,
 	INDEX.U,
 	INDEX.N]
@@ -26,10 +27,12 @@ var soundsSelected : Array[Sound] = []
 ## The current index in the selections array that the player is selecting. 
 var currSound : int = 0;
 ## Special case for prototype TRANSFORMATION
-var totalSounds : int = 12;
+var totalSounds : int
+#int(totalSounds)
 
 
 func _ready():
+	totalSounds = CORRECT_ANSWERS.size()-1
 	print(INDEX)
 	for i in range(0,totalSounds + 1):
 		# Fill selections with empty sounds
