@@ -71,6 +71,8 @@ func _on_okay_button_button_up():
 		var format = "[center]%d/%d[/center]"
 		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
 	else:
+		Globals.soundsSelected[Globals.currSound].isEmpty = false;
+		Globals.soundsSelected[Globals.currSound].animFrame = viewportMouth.frame
 		print("GAME OVER")
 		print(Globals.CORRECT_ANSWERS)
 		var intSelections : Array[int]
