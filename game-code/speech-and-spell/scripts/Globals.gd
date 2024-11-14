@@ -33,7 +33,7 @@ var totalSounds : int
 
 func _ready():
 	totalSounds = CORRECT_ANSWERS.size()-1
-	print(INDEX)
+	print(totalSounds)
 	for i in range(0,totalSounds + 1):
 		# Fill selections with empty sounds
 		soundsSelected.append(Sound.new(true,0))
