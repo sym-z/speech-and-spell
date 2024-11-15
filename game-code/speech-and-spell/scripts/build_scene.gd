@@ -60,28 +60,28 @@ func resetMouth():
 
 func _on_okay_button_button_up():
 	## TODO: Set viewport mouth to empty, advance syllable in word window, on last syllable move on to speech
-
-	if(Globals.currSound < Globals.totalSounds):
-		Globals.soundsSelected[Globals.currSound].isEmpty = false;
-		Globals.soundsSelected[Globals.currSound].animFrame = viewportMouth.frame
-		Globals.currSound += 1
-		resetMouth();
-		Globals.printSelections()
-		
-		var format = "[center]%d/%d[/center]"
-		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
-	else:
-		Globals.soundsSelected[Globals.currSound].isEmpty = false;
-		Globals.soundsSelected[Globals.currSound].animFrame = viewportMouth.frame
-		print("GAME OVER")
-		print(Globals.CORRECT_ANSWERS)
-		var intSelections : Array[int]
-		for sound in Globals.soundsSelected:
-			intSelections.append(sound.animFrame)
-		print(intSelections)
-		print("GAME WON?: ", Globals.CORRECT_ANSWERS == intSelections )
-		call_deferred("nextScene")
-	print("Okay")
+	if(Globals.mouthPlugged):
+		if(Globals.currSound < Globals.totalSounds):
+			Globals.soundsSelected[Globals.currSound].isEmpty = false;
+			Globals.soundsSelected[Globals.currSound].animFrame = viewportMouth.frame
+			Globals.currSound += 1
+			resetMouth();
+			Globals.printSelections()
+			
+			var format = "[center]%d/%d[/center]"
+			wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
+		else:
+			Globals.soundsSelected[Globals.currSound].isEmpty = false;
+			Globals.soundsSelected[Globals.currSound].animFrame = viewportMouth.frame
+			print("GAME OVER")
+			print(Globals.CORRECT_ANSWERS)
+			var intSelections : Array[int]
+			for sound in Globals.soundsSelected:
+				intSelections.append(sound.animFrame)
+			print(intSelections)
+			print("GAME WON?: ", Globals.CORRECT_ANSWERS == intSelections )
+			call_deferred("nextScene")
+		print("Okay")
 func _on_unplug_button_button_up():
 	Globals.soundsSelected[Globals.currSound].isEmpty = true
 	Globals.soundsSelected[Globals.currSound].animFrame = 0
