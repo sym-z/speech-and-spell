@@ -9,6 +9,7 @@ extends AnimatedSprite2D
 
 @export var label : RichTextLabel
 
+
 func _ready():
 	frame = startingFrame
 	label.text = '[center]' + Globals.CHAR_INDEX[frame] + '[/center]'

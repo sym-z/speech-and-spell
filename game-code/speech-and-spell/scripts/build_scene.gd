@@ -7,7 +7,8 @@ extends Node2D
 var insideWindow : bool = false;
 ## Changes the ?/? syllables when the arrows are pressed or a syllable is confirmed
 @export var wordProgressText : RichTextLabel
-
+@export var soundLibrary : Array[AudioStreamMP3] = []
+@export var speaker : AudioStreamPlayer2D
 func _ready():
 	print("Build")
 	var format = "[center]%d/%d[/center]"
@@ -28,6 +29,9 @@ func _input(event):
 			viewportMouth.animation = "syllables"
 			viewportMouth.frame = currFrame
 			print("PLOP!")
+			print(soundLibrary)
+			speaker.set_stream(soundLibrary[currFrame])
+			speaker.play()
 
 			
 func _on_area_2d_mouse_entered():
