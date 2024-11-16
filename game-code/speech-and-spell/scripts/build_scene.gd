@@ -12,7 +12,7 @@ var insideWindow : bool = false;
 func _ready():
 	print("Build")
 	var format = "[center]%d/%d[/center]"
-	wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
+	wordProgressText.text = format % [Globals.currSound+1,Globals.totalSounds+1]
 
 
 func _input(event):
@@ -74,7 +74,7 @@ func _on_okay_button_button_up():
 			Globals.printSelections()
 			
 			var format = "[center]%d/%d[/center]"
-			wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
+			wordProgressText.text = format % [Globals.currSound+1,Globals.totalSounds+1]
 		else:
 			Globals.soundsSelected[Globals.currSound].isEmpty = false;
 			Globals.soundsSelected[Globals.currSound].animFrame = viewportMouth.frame
@@ -101,7 +101,7 @@ func _on_left_word_arrow_button_up():
 		Globals.currSound -= 1;
 		# Show the previous choice
 		var format = "[center]%d/%d[/center]"
-		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
+		wordProgressText.text = format % [Globals.currSound+1,Globals.totalSounds+1]
 		if(Globals.soundsSelected[Globals.currSound].isEmpty == false):
 			print("gotttcha")
 			viewportMouth.animation = "syllables"
@@ -118,7 +118,7 @@ func _on_right_word_arrow_button_up():
 		Globals.currSound += 1;
 		# Show the next choice
 		var format = "[center]%d/%d[/center]"
-		wordProgressText.text = format % [Globals.currSound,Globals.totalSounds]
+		wordProgressText.text = format % [Globals.currSound+1,Globals.totalSounds+1]
 		if(Globals.soundsSelected[Globals.currSound].isEmpty == false):
 			viewportMouth.animation = "syllables"
 			viewportMouth.frame = Globals.soundsSelected[Globals.currSound].animFrame

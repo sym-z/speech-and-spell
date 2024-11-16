@@ -60,9 +60,9 @@ func _process(delta):
 # Tracks the index of the sound in the final performance
 var perfIndex : int = 0;
 func perform():
-	#frame = Globals.soundsSelected[perfIndex].animFrame
+	frame = Globals.soundsSelected[perfIndex].animFrame
 	# TESTING CODE
-	frame = Globals.CORRECT_ANSWERS[perfIndex]
+	#frame = Globals.CORRECT_ANSWERS[perfIndex]
 	speaker.stream = soundLibrary[frame]
 	speaker.play()
 	perfIndex += 1
@@ -70,9 +70,9 @@ func perform():
 signal endPerf
 func _on_performance_timer_timeout():
 	if(perfIndex <= Globals.totalSounds):
-		#frame = Globals.soundsSelected[perfIndex].animFrame
+		frame = Globals.soundsSelected[perfIndex].animFrame
 		# TESTING CODE
-		frame = Globals.CORRECT_ANSWERS[perfIndex]
+		#frame = Globals.CORRECT_ANSWERS[perfIndex]
 		speaker.stream = soundLibrary[frame]
 		speaker.play()
 		perfIndex += 1

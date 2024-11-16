@@ -14,4 +14,5 @@ func _process(delta):
 
 func _on_mouth_end_perf():
 	print("SHOW CORRECT IMAGE")
+	print("GAME WON: ", Globals.gameWon)
 	pass # Replace with function body.
