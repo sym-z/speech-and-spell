@@ -323,7 +323,7 @@ text = "[center]S[/center]"
 fit_content = true
 
 [node name="Performance Timer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.325
 
 [node name="Speaker" type="AudioStreamPlayer2D" parent="."]
 volume_db = 22.0
