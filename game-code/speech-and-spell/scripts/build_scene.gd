@@ -33,6 +33,7 @@ func _input(event):
 			speaker.set_stream(soundLibrary[currFrame])
 			speaker.play()
 
+
 			
 func _on_area_2d_mouse_entered():
 	insideWindow = true;
@@ -104,6 +105,8 @@ func _on_left_word_arrow_button_up():
 			viewportMouth.animation = "syllables"
 			viewportMouth.frame = Globals.soundsSelected[Globals.currSound].animFrame
 			Globals.mouthPlugged = true
+			speaker.set_stream(soundLibrary[viewportMouth.frame])
+			speaker.play()
 	else:
 		# TODO: Play error sound
 		print("ERROR")
@@ -118,6 +121,8 @@ func _on_right_word_arrow_button_up():
 			viewportMouth.animation = "syllables"
 			viewportMouth.frame = Globals.soundsSelected[Globals.currSound].animFrame
 			Globals.mouthPlugged = true
+			speaker.set_stream(soundLibrary[viewportMouth.frame])
+			speaker.play()
 		else:
 			viewportMouth.animation = "default"
 			Globals.mouthPlugged = false

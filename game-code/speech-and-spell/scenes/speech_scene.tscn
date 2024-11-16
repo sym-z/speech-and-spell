@@ -1,9 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8gif6a3kdtt8"]
+[gd_scene load_steps=5 format=3 uid="uid://c8gif6a3kdtt8"]
 
 [ext_resource type="Texture2D" uid="uid://cyq80u30nfjl8" path="res://sprites/speech-performance-sketch.png" id="1_mwkyu"]
+[ext_resource type="Texture2D" uid="uid://b23bsbju3p7gq" path="res://sprites/performance.png" id="2_hve7i"]
+[ext_resource type="PackedScene" uid="uid://d2qyyctn7xjl8" path="res://scenes/mouth.tscn" id="3_p0y24"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rejj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hve7i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Speech Scene" type="Node2D"]
 
 [node name="Reference Image" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_mwkyu")
 centered = false
+
+[node name="Background Image" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6rejj")
+centered = false
+
+[node name="Mouth" parent="Background Image" instance=ExtResource("3_p0y24")]
+position = Vector2(327, 229)
+animation = &"large"
+usingLabel = false
