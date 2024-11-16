@@ -30,7 +30,7 @@ var currSound : int = 0;
 var totalSounds : int
 #int(totalSounds)
 
-
+var gameWon : bool = false
 func _ready():
 	totalSounds = CORRECT_ANSWERS.size()-1
 	print(totalSounds)

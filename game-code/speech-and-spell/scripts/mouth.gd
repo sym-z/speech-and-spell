@@ -10,6 +10,11 @@ extends AnimatedSprite2D
 @export var label : RichTextLabel
 @export var usingLabel : bool = true
 
+@export var perfTimer : Timer
+
+@export var soundLibrary : Array[AudioStreamMP3]
+
+@export var speaker : AudioStreamPlayer2D
 func _ready():
 	frame = startingFrame
 	label.text = '[center]' + Globals.CHAR_INDEX[frame] + '[/center]'
@@ -52,3 +57,27 @@ func _process(delta):
 	if Globals.carryingMouth and leftMouseDown and $"." == Globals.currMouth:
 		position = get_viewport().get_mouse_position()
 		beingHeld.emit($".")
+# Tracks the index of the sound in the final performance
+var perfIndex : int = 0;
+func perform():
+	#frame = Globals.soundsSelected[perfIndex].animFrame
+	# TESTING CODE
+	frame = Globals.CORRECT_ANSWERS[perfIndex]
+	speaker.stream = soundLibrary[frame]
+	speaker.play()
+	perfIndex += 1
+	perfTimer.start()
+signal endPerf
+func _on_performance_timer_timeout():
+	if(perfIndex <= Globals.totalSounds):
+		#frame = Globals.soundsSelected[perfIndex].animFrame
+		# TESTING CODE
+		frame = Globals.CORRECT_ANSWERS[perfIndex]
+		speaker.stream = soundLibrary[frame]
+		speaker.play()
+		perfIndex += 1
+	else:
+		print("JUDGEMENT TIME")
+		perfTimer.stop()
+		endPerf.emit()
+		

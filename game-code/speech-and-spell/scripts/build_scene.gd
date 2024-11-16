@@ -85,6 +85,8 @@ func _on_okay_button_button_up():
 				intSelections.append(sound.animFrame)
 			print(intSelections)
 			print("GAME WON?: ", Globals.CORRECT_ANSWERS == intSelections )
+			if(Globals.CORRECT_ANSWERS == intSelections):
+				Globals.gameWon = true
 			call_deferred("nextScene")
 		print("Okay")
 func _on_unplug_button_button_up():

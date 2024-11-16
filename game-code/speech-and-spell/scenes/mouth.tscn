@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://d2qyyctn7xjl8"]
+[gd_scene load_steps=91 format=3 uid="uid://d2qyyctn7xjl8"]
 
 [ext_resource type="Texture2D" uid="uid://b6qj8wl1d4mwb" path="res://sprites/mouth-frames/default/a.png" id="1_f1xla"]
 [ext_resource type="Texture2D" uid="uid://bvs1khvyntl23" path="res://sprites/mouth-frames/default/b.png" id="2_jswm7"]
@@ -58,7 +58,35 @@
 [ext_resource type="Texture2D" uid="uid://by614ot50x0jr" path="res://sprites/mouth-frames/large/y-LARGE.png" id="55_dfg5p"]
 [ext_resource type="Texture2D" uid="uid://c7sbwwk7fdlj1" path="res://sprites/mouth-frames/large/z-LARGE.png" id="56_qv16o"]
 [ext_resource type="Texture2D" uid="uid://bbq3g4psewtbl" path="res://icon.svg" id="58_2rwo6"]
+[ext_resource type="AudioStream" uid="uid://d1s5pnqi54312" path="res://audio/A.mp3" id="58_bhevv"]
+[ext_resource type="AudioStream" uid="uid://cojw0ava0d0b" path="res://audio/B.mp3" id="59_laai8"]
 [ext_resource type="FontFile" uid="uid://ckuup7rk172pi" path="res://sprites/overlays/overlay.png" id="59_p57k4"]
+[ext_resource type="AudioStream" uid="uid://e7hjbu6masmt" path="res://audio/C.mp3" id="60_k01pw"]
+[ext_resource type="AudioStream" uid="uid://fbn5m3tlrjpb" path="res://audio/CH.mp3" id="61_rbo1q"]
+[ext_resource type="AudioStream" uid="uid://da8alutka75kw" path="res://audio/D.mp3" id="62_7ew66"]
+[ext_resource type="AudioStream" uid="uid://dcb254m5xpqnm" path="res://audio/E.mp3" id="63_2k5m8"]
+[ext_resource type="AudioStream" uid="uid://c13ubkeagcobm" path="res://audio/F.mp3" id="64_u02pc"]
+[ext_resource type="AudioStream" uid="uid://ckewurh1r8kc" path="res://audio/G.mp3" id="65_4nn8k"]
+[ext_resource type="AudioStream" uid="uid://cubatpyioe6kh" path="res://audio/I.mp3" id="66_7f4t0"]
+[ext_resource type="AudioStream" uid="uid://csqb4xxwccccp" path="res://audio/J.mp3" id="67_byle0"]
+[ext_resource type="AudioStream" uid="uid://budq1ex2afgp3" path="res://audio/K.mp3" id="68_oimsp"]
+[ext_resource type="AudioStream" uid="uid://bqlj5nray4bx8" path="res://audio/L.mp3" id="69_eiipe"]
+[ext_resource type="AudioStream" uid="uid://wpvx5figogha" path="res://audio/M.mp3" id="70_5ph5s"]
+[ext_resource type="AudioStream" uid="uid://yfk6c21hg7i3" path="res://audio/N.mp3" id="71_xrhc2"]
+[ext_resource type="AudioStream" uid="uid://bnrq8j7ytn8du" path="res://audio/O.mp3" id="72_vkttu"]
+[ext_resource type="AudioStream" uid="uid://faf43uiecq5a" path="res://audio/P.mp3" id="73_irpmn"]
+[ext_resource type="AudioStream" uid="uid://fermn06hoact" path="res://audio/Q.mp3" id="74_dqd1g"]
+[ext_resource type="AudioStream" uid="uid://bule15855ubh1" path="res://audio/R.mp3" id="75_hclvi"]
+[ext_resource type="AudioStream" uid="uid://bwwgnawna3q24" path="res://audio/S.mp3" id="76_0l5k0"]
+[ext_resource type="AudioStream" uid="uid://ccpsbj4y13fts" path="res://audio/SH.mp3" id="77_e2f6v"]
+[ext_resource type="AudioStream" uid="uid://cth1xdd6amghl" path="res://audio/T.mp3" id="78_ctalf"]
+[ext_resource type="AudioStream" uid="uid://cuev756rnaanm" path="res://audio/TH.mp3" id="79_kwo3g"]
+[ext_resource type="AudioStream" uid="uid://bon8ju0qlx612" path="res://audio/U.mp3" id="80_mkt5k"]
+[ext_resource type="AudioStream" uid="uid://c5rvj6cwu8riu" path="res://audio/V.mp3" id="81_v7ob5"]
+[ext_resource type="AudioStream" uid="uid://i7i375fyuju6" path="res://audio/W.mp3" id="82_nqd0s"]
+[ext_resource type="AudioStream" uid="uid://c7omam3v0vp5m" path="res://audio/X.mp3" id="83_ld5jj"]
+[ext_resource type="AudioStream" uid="uid://dwd5gvpvlb525" path="res://audio/Y.mp3" id="84_ywibu"]
+[ext_resource type="AudioStream" uid="uid://ctuyriws2eay5" path="res://audio/Z.mp3" id="85_ll5g4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f6lj7"]
 animations = [{
@@ -255,11 +283,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Mouth" type="AnimatedSprite2D" node_paths=PackedStringArray("overlay", "label")]
+[node name="Mouth" type="AnimatedSprite2D" node_paths=PackedStringArray("overlay", "label", "perfTimer", "speaker")]
 sprite_frames = SubResource("SpriteFrames_f6lj7")
 script = ExtResource("3_fyms1")
 overlay = NodePath("Overlay")
 label = NodePath("Control/Label")
+perfTimer = NodePath("Performance Timer")
+soundLibrary = Array[AudioStreamMP3]([ExtResource("58_bhevv"), ExtResource("59_laai8"), ExtResource("60_k01pw"), ExtResource("61_rbo1q"), ExtResource("62_7ew66"), ExtResource("63_2k5m8"), ExtResource("64_u02pc"), ExtResource("65_4nn8k"), ExtResource("66_7f4t0"), ExtResource("67_byle0"), ExtResource("68_oimsp"), ExtResource("69_eiipe"), ExtResource("70_5ph5s"), ExtResource("71_xrhc2"), ExtResource("72_vkttu"), ExtResource("73_irpmn"), ExtResource("74_dqd1g"), ExtResource("75_hclvi"), ExtResource("76_0l5k0"), ExtResource("77_e2f6v"), ExtResource("78_ctalf"), ExtResource("79_kwo3g"), ExtResource("80_mkt5k"), ExtResource("81_v7ob5"), ExtResource("82_nqd0s"), ExtResource("83_ld5jj"), ExtResource("84_ywibu"), ExtResource("85_ll5g4")])
+speaker = NodePath("Speaker")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -291,5 +322,11 @@ bbcode_enabled = true
 text = "[center]S[/center]"
 fit_content = true
 
+[node name="Performance Timer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="Speaker" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Performance Timer" to="." method="_on_performance_timer_timeout"]
