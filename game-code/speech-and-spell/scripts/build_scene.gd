@@ -136,7 +136,6 @@ func _on_left_inventory_arrow_button_up():
 		rightMouth.frame = Globals.INDEX.size() - 1
 		leftMouth.frame -= 1
 	elif(leftMouth.frame > 0):
-		## TODO CHANGE AUDIO AND OVERLAYS HERE CONDENSE INTO OOP
 		rightMouth.frame -= 1
 		leftMouth.frame -= 1
 	else:
@@ -151,7 +150,6 @@ func _on_right_inventory_arrow_button_up():
 		leftMouth.frame = 0
 		rightMouth.frame += 1
 	elif(rightMouth.frame < Globals.INDEX.size() -1):
-		## TODO CHANGE AUDIO AND OVERLAYS HERE CONDENSE INTO OOP
 		leftMouth.frame += 1
 		rightMouth.frame += 1
 	# Start wrap around bounds

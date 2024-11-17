@@ -28,7 +28,7 @@ var soundsSelected : Array[Sound] = []
 var currSound : int = 0;
 ## Special case for prototype TRANSFORMATION
 var totalSounds : int
-#int(totalSounds)
+
 
 var gameWon : bool = false
 func _ready():
@@ -42,6 +42,3 @@ func printSelections():
 	for sound in soundsSelected:
 		print("Sound: " + CHAR_INDEX[sound.animFrame] + " Empty? : ", sound.isEmpty, " Index: ", sound.animFrame)
 		print(CORRECT_ANSWERS)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
