@@ -1,18 +1,12 @@
 extends Node2D
 @export var mouth : AnimatedSprite2D
-
-# Called when the node enters the scene tree for the first time.
+@export var backgroundImage : AnimatedSprite2D
 func _ready():
 	mouth.perform()
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_mouth_end_perf():
-	print("SHOW CORRECT IMAGE")
+	mouth.visible = false;
 	print("GAME WON: ", Globals.gameWon)
-	pass # Replace with function body.
+	if(Globals.gameWon):
+		backgroundImage.animation = "win"
+	else:
+		backgroundImage.animation = "loss"

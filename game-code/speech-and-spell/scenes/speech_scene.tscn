@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8gif6a3kdtt8"]
+[gd_scene load_steps=9 format=3 uid="uid://c8gif6a3kdtt8"]
 
 [ext_resource type="Script" path="res://scripts/speech_scene.gd" id="1_jkc3a"]
 [ext_resource type="Texture2D" uid="uid://cyq80u30nfjl8" path="res://sprites/speech-performance-sketch.png" id="1_mwkyu"]
 [ext_resource type="Texture2D" uid="uid://b23bsbju3p7gq" path="res://sprites/performance.png" id="2_hve7i"]
 [ext_resource type="PackedScene" uid="uid://d2qyyctn7xjl8" path="res://scenes/mouth.tscn" id="3_p0y24"]
+[ext_resource type="Texture2D" uid="uid://d0uuuu4kge30n" path="res://sprites/ending-bad.png" id="4_plc7a"]
+[ext_resource type="Texture2D" uid="uid://ba0i3ir1kxeo8" path="res://sprites/ending-good1.png" id="5_mn7c6"]
+[ext_resource type="Texture2D" uid="uid://dnwylht2yh228" path="res://sprites/ending-good2.png" id="6_fmhte"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6rejj"]
 animations = [{
@@ -14,11 +17,31 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_plc7a")
+}],
+"loop": true,
+"name": &"loss",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_mn7c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fmhte")
+}],
+"loop": true,
+"name": &"win",
+"speed": 25.0
 }]
 
-[node name="Speech Scene" type="Node2D" node_paths=PackedStringArray("mouth")]
+[node name="Speech Scene" type="Node2D" node_paths=PackedStringArray("mouth", "backgroundImage")]
 script = ExtResource("1_jkc3a")
 mouth = NodePath("Mouth")
+backgroundImage = NodePath("Background Image")
 
 [node name="Reference Image" type="Sprite2D" parent="."]
 visible = false
@@ -27,6 +50,7 @@ centered = false
 
 [node name="Background Image" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6rejj")
+autoplay = "default"
 centered = false
 
 [node name="Mouth" parent="." instance=ExtResource("3_p0y24")]
