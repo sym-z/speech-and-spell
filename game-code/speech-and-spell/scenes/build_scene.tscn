@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://o8dp7j6fxjhp"]
+[gd_scene load_steps=82 format=3 uid="uid://o8dp7j6fxjhp"]
 
 [ext_resource type="Script" path="res://scripts/build_scene.gd" id="1_2b11n"]
 [ext_resource type="Texture2D" uid="uid://dkn0dp7cnmc3d" path="res://sprites/bg.png" id="2_1elwy"]
@@ -65,7 +65,9 @@
 [ext_resource type="Texture2D" uid="uid://de0txx3ccgpov" path="res://sprites/mouth-frames/large/v-LARGE.png" id="29_xs21h"]
 [ext_resource type="Texture2D" uid="uid://b74n7o8bylha0" path="res://sprites/mouth-frames/large/w-LARGE.png" id="30_5lwmw"]
 [ext_resource type="Texture2D" uid="uid://b7lvvffaj0e6s" path="res://sprites/mouth-frames/large/x-LARGE.png" id="31_uta7k"]
+[ext_resource type="Texture2D" uid="uid://c2ou0lgksb6ek" path="res://sprites/viewport.png" id="32_0vfh6"]
 [ext_resource type="Texture2D" uid="uid://by614ot50x0jr" path="res://sprites/mouth-frames/large/y-LARGE.png" id="32_2s5iw"]
+[ext_resource type="Texture2D" uid="uid://dw0kecpqrr0ov" path="res://sprites/inventory-panel.png" id="33_8rkl1"]
 [ext_resource type="Texture2D" uid="uid://c7sbwwk7fdlj1" path="res://sprites/mouth-frames/large/z-LARGE.png" id="33_cqn06"]
 [ext_resource type="FontFile" uid="uid://ckuup7rk172pi" path="res://sprites/overlays/overlay.png" id="38_wqlps"]
 
@@ -218,6 +220,15 @@ centered = false
 visible = false
 texture = ExtResource("2_efu6d")
 centered = false
+
+[node name="Viewport Background" type="Sprite2D" parent="."]
+position = Vector2(345, 273)
+scale = Vector2(2.01839, 2.04171)
+texture = ExtResource("32_0vfh6")
+
+[node name="Inventory Background" type="Sprite2D" parent="."]
+position = Vector2(377, 625)
+texture = ExtResource("33_8rkl1")
 
 [node name="Creature Viewport" type="AnimatedSprite2D" parent="."]
 position = Vector2(36, 35)
