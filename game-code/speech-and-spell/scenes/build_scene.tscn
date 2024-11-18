@@ -1,8 +1,7 @@
-[gd_scene load_steps=82 format=3 uid="uid://o8dp7j6fxjhp"]
+[gd_scene load_steps=81 format=3 uid="uid://o8dp7j6fxjhp"]
 
 [ext_resource type="Script" path="res://scripts/build_scene.gd" id="1_2b11n"]
 [ext_resource type="Texture2D" uid="uid://dkn0dp7cnmc3d" path="res://sprites/bg.png" id="2_1elwy"]
-[ext_resource type="Texture2D" uid="uid://cclt0up3nbif2" path="res://sprites/speech-assembly-sketch.png" id="2_efu6d"]
 [ext_resource type="AudioStream" uid="uid://d1s5pnqi54312" path="res://audio/A.mp3" id="2_ehrqd"]
 [ext_resource type="AudioStream" uid="uid://cojw0ava0d0b" path="res://audio/B.mp3" id="3_qj8l8"]
 [ext_resource type="Texture2D" uid="uid://c3ua88sal7kvc" path="res://sprites/creature_viewport.png" id="3_yyw1m"]
@@ -214,11 +213,6 @@ speaker = NodePath("Speaker")
 
 [node name="Background Image" type="Sprite2D" parent="."]
 texture = ExtResource("2_1elwy")
-centered = false
-
-[node name="Reference Image" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_efu6d")
 centered = false
 
 [node name="Viewport Background" type="Sprite2D" parent="."]

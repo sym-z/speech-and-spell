@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8gif6a3kdtt8"]
+[gd_scene load_steps=11 format=3 uid="uid://c8gif6a3kdtt8"]
 
 [ext_resource type="Script" path="res://scripts/speech_scene.gd" id="1_jkc3a"]
 [ext_resource type="Texture2D" uid="uid://cyq80u30nfjl8" path="res://sprites/speech-performance-sketch.png" id="1_mwkyu"]
+[ext_resource type="AudioStream" uid="uid://dwc7evivm7qu6" path="res://audio/good-ending.mp3" id="2_5m24j"]
 [ext_resource type="Texture2D" uid="uid://b23bsbju3p7gq" path="res://sprites/performance.png" id="2_hve7i"]
+[ext_resource type="AudioStream" uid="uid://2qle6bkyodci" path="res://audio/bad-ending.mp3" id="3_8tvsr"]
 [ext_resource type="PackedScene" uid="uid://d2qyyctn7xjl8" path="res://scenes/mouth.tscn" id="3_p0y24"]
 [ext_resource type="Texture2D" uid="uid://d0uuuu4kge30n" path="res://sprites/ending-bad.png" id="4_plc7a"]
 [ext_resource type="Texture2D" uid="uid://ba0i3ir1kxeo8" path="res://sprites/ending-good1.png" id="5_mn7c6"]
@@ -38,10 +40,13 @@ animations = [{
 "speed": 25.0
 }]
 
-[node name="Speech Scene" type="Node2D" node_paths=PackedStringArray("mouth", "backgroundImage")]
+[node name="Speech Scene" type="Node2D" node_paths=PackedStringArray("mouth", "backgroundImage", "speaker")]
 script = ExtResource("1_jkc3a")
 mouth = NodePath("Mouth")
 backgroundImage = NodePath("Background Image")
+goodSound = ExtResource("2_5m24j")
+badSound = ExtResource("3_8tvsr")
+speaker = NodePath("Speaker")
 
 [node name="Reference Image" type="Sprite2D" parent="."]
 visible = false
@@ -57,5 +62,7 @@ centered = false
 position = Vector2(327, 229)
 animation = &"large"
 usingLabel = false
+
+[node name="Speaker" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="endPerf" from="Mouth" to="." method="_on_mouth_end_perf"]
